@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- add bootstrap from cdn -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- add style.css -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div class="container">
+         <div class="row">
+              <div class="col-md-12">
+                <div class="tasks-box-heading">
+                    <!-- center h1 - "TODO App" -->
+                    <h1 class="text-center">TODO App</h1>
+                    <p class="text-center subhead">Awesome JS Todo APP</p>
+                </div>
+               <!-- create a task list layout with table with priority badge -->
+                <table class="table table-bordered">
+                     <thead>
+                          <tr>
+                            <th>Task</th>
+                            <th>Priority</th>
+                            <th>Actions</th>
+                          </tr>
+                     </thead>
+                     <tbody>
+                          <tr class="task-body">
+                            <td class="task-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. A fuga voluptates doloremque odit quisquam nemo.</td>
+                            <td class="task-priority"><span class="badge badge-danger">High</span></td>
+                            <td class="task-action">
+                                 <button class="btn btn-primary">Edit</button>
+                                 <button class="btn btn-danger">Delete</button>
+                            </td>
+                          </tr>
+                     </tbody>
+               
+               </div>     
+         </div>
+   </div>
+    <!-- add script.js -->
+    <script src="script.js"></script>
+</body>
+</html>
