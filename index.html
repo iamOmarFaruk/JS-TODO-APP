@@ -1,40 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- add bootstrap from cdn -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- add style.css -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- add bootstrap from cdn -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- add style.css -->
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-   <div class="container">
-         <div class="row">
-              <div class="col-md-12">
-                <div class="tasks-box-heading">
-                    <!-- center h1 - "TODO App" -->
-                    <h1 class="text-center">TODO App</h1>
-                    <p class="text-center subhead">Awesome JS Todo APP</p>
-                </div>
-               <!-- create a task list layout with table with priority badge -->
-                <table class="table table-bordered">
-                     <thead>
-                          <tr>
-                            <th>Task</th>
-                            <th>Priority</th>
-                            <th>Actions</th>
-                          </tr>
-                     </thead>
-                     <tbody id="task_parent">
-                     </tbody>
-               
-               </div>     
-         </div>
-   </div>
-    <!-- add script.js -->
-    <script src="script.js"></script>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tasks-box-heading">
+          <!-- center h1 - "TODO App" -->
+          <h1 class="text-center">TODO App</h1>
+          <p class="text-center subhead">Awesome JS Todo APP</p>
+        </div>
+        <!-- add new tasks form -->
+        <form class="mt-4 mb-4">
+          <div class="form-group">
+            <label for="task">Add New Task</label>
+            <input type="text" class="form-control" id="new-task-description" placeholder="Enter Task" value="">
+            <!-- priority as dropdown -->
+            <label for="priority">Priority</label>
+            <select class="form-control" id="new-task-priority">
+              <option>Low</option>
+              <option>Medium</option>
+              <option>High</option>
+            </select>
+          </div>
+          <button type="submit" id="new-task-submit" class="btn btn-primary">Add Task</button>
+        </form>
+
+        <!-- create a task list layout with table with priority badge -->
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Priority</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="task_parent">
+          </tbody>
+        
+          </div>
+          </div>
+          </div>
+          <!-- add script.js -->
+          <script src="script.js"></script>
 </body>
+
 </html>

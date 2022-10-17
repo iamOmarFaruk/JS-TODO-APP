@@ -1,50 +1,21 @@
 // domcontentloaded
 window.addEventListener("DOMContentLoaded", function () {
   // create a tasks object with tasks id,description,priority
-  let tasks = [
-    {
-      id: 1,
-      description:
-        "uis mollis, metus ac porttitor imperdiet, nisi dui dignissim eros",
-      priority: "high",
-    },
-    {
-      id: 2,
-      description: "Nunc dictum sapien vel leo varius,",
-      priority: "medium",
-    },
-    {
-      id: 3,
-      description:
-        "Duis malesuada arcu at dui fringilla, sed convallis mauris fermentum",
-      priority: "low",
-    },
-    {
-      id: 4,
-      description: "Duis lobortis ipsum eu odio rutrum",
-      priority: "high",
-    },
-    {
-      id: 5,
-      description:
-        "Mauris turpis lectus, aliquet at sapien a, tempor finibus nibh",
-      priority: "medium",
-    },
-  ];
+  let tasks = [];
 
-  // single tasks template
- 
+  // render the tasks
+  function renderTasks(tasks) {
     let taskParent = document.querySelector("#task_parent");
-
+    taskParent.innerHTML = "";
     // loop through tasks array and append to taskParent using TasksTemplate
     tasks.forEach((task) => {
-        let priority = "info";
-        if (task.priority === "high") {
-            priority = "danger";
-        } else if (task.priority === "medium") {
-            priority = "warning";
-        }
-        let TasksTemplate = `
+      let priority = "info";
+      if (task.priority === "high") {
+        priority = "danger";
+      } else if (task.priority === "medium") {
+        priority = "warning";
+      }
+      let TasksTemplate = `
      <tr class="task-body">
         <td class="task-description">${task.description}</td>
         <td class="task-priority"><span class="badge badge-${priority}">${task.priority}</span></td>
@@ -54,9 +25,30 @@ window.addEventListener("DOMContentLoaded", function () {
         </td>
         </tr>
     `;
-        taskParent.innerHTML += TasksTemplate;
+      // empty the taskParent
 
+      taskParent.insertAdjacentHTML("beforeend", TasksTemplate);
     });
-        
-    
+  }
+
+  let NewTaskDescription = document.getElementById("new-task-description");
+  let NewTaskPriority = document.getElementById("new-task-priority");
+  let NewTaskSubmit = document.getElementById("new-task-submit");
+
+  // NewTaskSubmit click and console.log the values
+  NewTaskSubmit.addEventListener("click", function (e) {
+    e.preventDefault();
+    let newTask = {
+      id: Date.now(),
+      description: NewTaskDescription.value,
+      priority: NewTaskPriority.value,
+    };
+    // add the new task to tasks array by [...tasks,newTask]
+    tasks = [...tasks, newTask];
+    renderTasks(tasks);
+    console.log(tasks);
+  });
+  // =========================== First Load =========================== //
+  // renderTasks(tasks);
+  // =========================== First Load =========================== //
 });
