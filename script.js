@@ -1,21 +1,27 @@
 // domcontentloaded
 window.addEventListener("DOMContentLoaded", function () {
-  // create a tasks object with tasks id,description,priority
-  let tasks = [];
-
+  // if have something in localStorage, name tasks then
+  if (localStorage.getItem("tasks")) {
+    tasks = JSON.parse(localStorage.getItem("tasks"));
+  } else {
+    tasks = [];
+  }
   // render the tasks
   function renderTasks(tasks) {
     let taskParent = document.querySelector("#task_parent");
     taskParent.innerHTML = "";
     // loop through tasks array and append to taskParent using TasksTemplate
-    tasks.forEach((task) => {
-      let priority = "info";
-      if (task.priority === "high") {
-        priority = "danger";
-      } else if (task.priority === "medium") {
-        priority = "warning";
-      }
-      let TasksTemplate = `
+    tasks
+      .slice()
+      .reverse()
+      .forEach((task) => {
+        let priority =
+          task.priority === "High"
+            ? "danger"
+            : task.priority === "Medium"
+            ? "warning"
+            : "info";
+        let TasksTemplate = `
      <tr class="task-body">
         <td class="task-description">${task.description}</td>
         <td class="task-priority"><span class="badge badge-${priority}">${task.priority}</span></td>
@@ -25,10 +31,10 @@ window.addEventListener("DOMContentLoaded", function () {
         </td>
         </tr>
     `;
-      // empty the taskParent
+        // empty the taskParent
 
-      taskParent.insertAdjacentHTML("beforeend", TasksTemplate);
-    });
+        taskParent.insertAdjacentHTML("beforeend", TasksTemplate);
+      });
   }
 
   let NewTaskDescription = document.getElementById("new-task-description");
@@ -45,10 +51,15 @@ window.addEventListener("DOMContentLoaded", function () {
     };
     // add the new task to tasks array by [...tasks,newTask]
     tasks = [...tasks, newTask];
+
+    // stringify the tasks array and set it to localStorage
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
     renderTasks(tasks);
-    console.log(tasks);
+    // clear the input fields
+    NewTaskDescription.value = "";
   });
   // =========================== First Load =========================== //
-  // renderTasks(tasks);
+  renderTasks(tasks);
   // =========================== First Load =========================== //
 });
